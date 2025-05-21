@@ -54,19 +54,18 @@ class Solution(object):
         def Ajust_Lenth(problems,result: list,i = 0 ): 
             for arg in problems:
                 first_num,second_num,operoator = arg[0],arg[-1],arg[1]
-                diffe_lenth = abs(len(first_num) - len(second_num))
                 if len(first_num) < len(second_num):
-                    first_num = first_num.rjust(diffe_lenth+len(first_num)+2)
                     second_num = operoator+' '+ second_num
-                    result[i] = ' '*(len(second_num)-len(result[i]))+result[i]
+                    first_num = first_num.rjust(len(second_num))
+                    result[i] = result[i].rjust(len(second_num))
                 elif len(first_num) > len(second_num):
-                    second_num = operoator+' '+ second_num.rjust(diffe_lenth+len(second_num))
-                    first_num = '  ' +first_num
-                    result[i] = ' '*(len(second_num)-len(result[i]))+result[i]
+                    first_num = first_num.rjust(len(first_num)+2)
+                    second_num = operoator+ second_num.rjust(len(first_num)-1)
+                    result[i] = result[i].rjust(len(first_num))
                 else:
-                    first_num = '  '+first_num
-                    second_num = operoator + ' '+ second_num
-                    result[i] = '  '+ result[i]   
+                    first_num = first_num.rjust(len(first_num)+2)
+                    second_num = operoator + second_num.rjust(len(second_num)+1)
+                    result[i] = result[i].rjust(len(result[i])+2)   
                 first_num_list.append(first_num)
                 second_num_list.append(second_num)
                 i+=1 
