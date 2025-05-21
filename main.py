@@ -13,11 +13,11 @@ class Solution(object):
             return split_list
         def check_NLenth(problems):
             for arg in problems:
-                if len(arg[0]) > 4 or len(arg[-1]) > 4:
+                if len(arg[0]) <= 4 and len(arg[-1]) <= 4:
+                    continue
+                else:
                     print("Error: Numbers cannot be more than four digits.")
                     return False
-                else:
-                    continue
             return True
         def Is_Degit(problems):
             for arg in problems:
@@ -97,9 +97,5 @@ class Solution(object):
             print_arithmetic_arranger(problems)
 
 problems = ["32 - 698","3801 - 2", "45 + 43", "1239 + 499","225 - 9999"]
-Solution.arithmetic_arranger(problems)
 Solution.arithmetic_arranger(problems,show_answers=True)
 Solution.arithmetic_arranger(problems)
-a = "John"
-a =  "{:>15}".format(a)
-print(a,a[0])
