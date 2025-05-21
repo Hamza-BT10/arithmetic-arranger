@@ -53,23 +53,23 @@ class Solution(object):
             return result
         def Ajust_Lenth(problems,result: list,i = 0 ): 
             for arg in problems:
-                if len(arg[0]) < len(arg[-1]):
-                    diffe_lenth = ' '* (abs(len(arg[0]) - len(arg[-1]))+2)
-                    arg[0] = diffe_lenth+arg[0]
-                    arg[-1] =arg[1]+' '+ arg[-1]
-                    result[i] = ' '*(len(arg[-1])-len(result[i]))+result[i]
-                elif len(arg[0]) > len(arg[-1]):
-                    diffe_lenth =' '* (abs(len(arg[0]) - len(arg[-1])))
-                    arg[-1] =arg[1]+diffe_lenth + arg[-1]
-                    arg[0] = ' ' +arg[0]
-                    result[i] = ' '*(len(arg[-1])-len(result[i]))+result[i]
+                first_num,second_num,operoator = arg[0],arg[-1],arg[1]
+                diffe_lenth = abs(len(first_num) - len(second_num))
+                if len(first_num) < len(second_num):
+                    first_num = first_num.rjust(diffe_lenth+len(first_num)+2)
+                    second_num = operoator+' '+ second_num
+                    result[i] = ' '*(len(second_num)-len(result[i]))+result[i]
+                elif len(first_num) > len(second_num):
+                    second_num = operoator+' '+ second_num.rjust(diffe_lenth+len(second_num))
+                    first_num = '  ' +first_num
+                    result[i] = ' '*(len(second_num)-len(result[i]))+result[i]
                 else:
-                    arg[0] = '  '+arg[0]
-                    arg[-1] = arg[1] + ' '+ arg[-1]
-                    result[i] = '  '+ result[i]
-                i+=1   
-                first_num_list.append(arg[0])
-                second_num_list.append(arg[-1]) 
+                    first_num = '  '+first_num
+                    second_num = operoator + ' '+ second_num
+                    result[i] = '  '+ result[i]   
+                first_num_list.append(first_num)
+                second_num_list.append(second_num)
+                i+=1 
     
         def print_arithmetic_arranger(problems, show_answers=False):
             problems = Convert_list(problems)
@@ -91,14 +91,12 @@ class Solution(object):
                     print(f"{result[i]}{' ':>4}",end='')
 
         if show_answers:
+            print()
             print_arithmetic_arranger(problems,show_answers=True)
         else:
             print("\n")
             print_arithmetic_arranger(problems)
 
 problems = ["32 - 698","3801 - 2", "45 + 43", "1239 + 499","225 - 9999"]
-Solution.arithmetic_arranger(problems,show_answers=True)
 Solution.arithmetic_arranger(problems)
-a = "John"
-a =  "{:>15}".format(a)
-print(a,a[0])
+Solution.arithmetic_arranger(problems,show_answers=True)
