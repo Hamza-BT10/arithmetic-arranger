@@ -93,9 +93,13 @@ class Solution(object):
             print()
             print_arithmetic_arranger(problems,show_answers=True)
         else:
-            print("\n")
+            print()
             print_arithmetic_arranger(problems)
 
 problems = ["32 - 698","3801 - 2", "45 + 43", "1239 + 499","225 - 9999"]
 Solution.arithmetic_arranger(problems)
 Solution.arithmetic_arranger(problems,show_answers=True)
+Solution.arithmetic_arranger(problems)
+a = "John"
+a =  "{:>15}".format(a)
+print(a,a[0])
